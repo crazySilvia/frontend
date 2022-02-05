@@ -1,25 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import AuthProvider from "./Context/AuthProvider";
+import LoginPage from "./Pages/LoginPage";
+import Homepage from "./Pages/Homepage";
+import RegisterPage from "./Pages/RegisterPage";
+import ListPage from "./Pages/ListPage";
+import GewuerzePage from "./Pages/Listpages/GewuerzePage";
+import TrockenPage from "./Pages/Listpages/TrockenPage";
+import GetraenkePage from "./Pages/Listpages/GetraenkePage";
+import KonservenPage from "./Pages/Listpages/KonservenPage";
+import SelbstgemachtesPage from "./Pages/Listpages/SelbstgemachtPage";
+import SonstigesPage from "./Pages/Listpages/SonstigesPage";
+import BackenPage from "./Pages/Listpages/BackenPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
+            <Route path={"/"} element={<Homepage />}/>
+            <Route path={"/login"} element={<LoginPage />}/>
+            <Route path={"/register"} element={<RegisterPage />}/>
+            <Route path={"/vorrat"} element={<ListPage />}/>
+            <Route path={"/gewuerze"} element={<GewuerzePage />}/>
+            <Route path={"/trocken"} element={<TrockenPage />}/>
+            <Route path="/getraenke" element={<GetraenkePage />}/>
+            <Route path={"/konserven"} element={<KonservenPage />}/>
+            <Route path={"/selbstgemacht"} element={<SelbstgemachtesPage />}/>
+            <Route path={"/sonstiges"} element={<SonstigesPage />}/>
+            <Route path={"/backen"} element={<BackenPage />}/>
+          </ Routes>
+        </ AuthProvider>
+      </ BrowserRouter>
   );
 }
 
